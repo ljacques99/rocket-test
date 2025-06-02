@@ -1,0 +1,33 @@
+### Test the root endpoint
+GET http://localhost:8090/
+
+### Test the hello endpoint
+GET http://localhost:8090/hello
+
+### Test get item with id parameter
+GET http://localhost:8090/item/123/Laurent
+
+### Test list items with pagination and sorting
+GET http://localhost:8090/items?page=2&per_page=20&sort_by=name
+
+### Test list items with default values
+GET http://localhost:8090/items
+
+### Test get multiple items by IDs
+GET http://localhost:8090/items/1/2/3/4/5
+
+### Test get single item by ID
+GET http://localhost:8090/items/42
+
+### Test get multiple items using query parameters
+GET http://localhost:8090/itemsmultiple?id=1&id=2&id=3&id=4&id=5
+
+### Test get single item using query parameter
+GET http://localhost:8090/itemsmultiple?id=42
+
+### Test with curl (alternative)
+# curl http://localhost:8090/
+# curl http://localhost:8090/item/123
+# curl "http://localhost:8090/items?page=2&per_page=20&sort_by=name"
+# curl http://localhost:8090/items/1/2/3/4/5
+# curl "http://localhost:8090/itemsmultiple?id=1&id=2&id=3&id=4&id=5"

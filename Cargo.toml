@@ -1,0 +1,10 @@
+[package]
+name = "rocket-test"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rocket = "0.5.0"
+
+[dev-dependencies]
+cargo-watch = "8.4.0"
