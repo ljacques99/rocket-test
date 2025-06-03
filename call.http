@@ -31,3 +31,134 @@ GET http://localhost:8090/itemsmultiple?id=42
 # curl "http://localhost:8090/items?page=2&per_page=20&sort_by=name"
 # curl http://localhost:8090/items/1/2/3/4/5
 # curl "http://localhost:8090/itemsmultiple?id=1&id=2&id=3&id=4&id=5"
+
+### Create a new person
+POST http://localhost:8090/person
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "age": 30,
+    "wage": 50000.50
+}
+
+### Create another person
+POST http://localhost:8090/person
+Content-Type: application/json
+
+{
+    "name": "Jane Smith",
+    "age": 28,
+    "wage": 65000.75
+}
+
+### Test dynamic JSON endpoint with simple object
+POST http://localhost:8090/dynamic
+Content-Type: application/json
+
+{
+    "message": "Hello",
+    "count": 42,
+    "is_active": true
+}
+
+### Test dynamic JSON endpoint with nested object
+POST http://localhost:8090/dynamic
+Content-Type: application/json
+
+{
+    "user": {
+        "name": "Alice",
+        "preferences": {
+            "theme": "dark",
+            "notifications": true
+        }
+    },
+    "settings": {
+        "language": "en",
+        "timezone": "UTC"
+    }
+}
+
+### Test dynamic JSON endpoint with array
+POST http://localhost:8090/dynamic
+Content-Type: application/json
+
+{
+    "items": [1, 2, 3, 4, 5],
+    "tags": ["rust", "rocket", "api"],
+    "metadata": {
+        "version": "1.0",
+        "author": "John Doe"
+    }
+}
+
+### Create a product with all fields
+POST http://localhost:8090/product
+Content-Type: application/x-www-form-urlencoded
+
+name=Laptop&price=999.99&category=Electronics&in_stock=true&quantity=10
+
+### Create a product without optional quantity
+POST http://localhost:8090/product
+Content-Type: application/x-www-form-urlencoded
+
+name=Headphones&price=199.50&category=Electronics&in_stock=true
+
+### Create an out of stock product
+POST http://localhost:8090/product
+Content-Type: application/x-www-form-urlencoded
+
+name=Desk&price=299.99&category=Furniture&in_stock=false&quantity=0
+
+### Upload a document with text file
+# This is a curl command example since REST Client doesn't support multipart/form-data directly
+# curl -X POST http://localhost:8090/upload \
+#   -F "title=My Document" \
+#   -F "description=This is a test document" \
+#   -F "file=@/path/to/your/file.txt"
+
+### Alternative way to test using a form
+# You can test this endpoint using a tool like Postman or by creating an HTML form:
+# <form action="http://localhost:8090/upload" method="post" enctype="multipart/form-data">
+#   <input type="text" name="title" value="My Document">
+#   <input type="text" name="description" value="This is a test document">
+#   <input type="file" name="file">
+#   <input type="submit" value="Upload">
+# </form>
+
+### Upload a document with specific French text
+# First, create a file named example.txt with the content
+# echo "Ceci est mon call exemple" > example.txt
+# Then use this curl command:
+# curl -X POST http://localhost:8090/upload \
+#   -F "title=Document Français" \
+#   -F "description=Un exemple de document en français" \
+#   -F "file=@example.txt"
+
+### Alternative way to test using a form with the same content
+# <form action="http://localhost:8090/upload" method="post" enctype="multipart/form-data">
+#   <input type="text" name="title" value="Document Français">
+#   <input type="text" name="description" value="Un exemple de document en français">
+#   <input type="file" name="file" value="Ceci est mon call exemple">
+#   <input type="submit" value="Upload">
+# </form>
+
+### Upload a document with specific content
+POST http://localhost:8090/upload
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="title"
+
+Titre
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="description"
+
+Decrire ici
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="archivo.txt"
+Content-Type: text/plain
+
+contenu affiche
+------WebKitFormBoundary7MA4YWxkTrZu0gW--

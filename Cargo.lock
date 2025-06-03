@@ -420,6 +420,7 @@ dependencies = [
  "iana-time-zone",
  "js-sys",
  "num-traits",
+ "serde",
  "wasm-bindgen",
  "windows-link",
 ]
@@ -1910,6 +1911,7 @@ dependencies = [
  "rocket_codegen",
  "rocket_http",
  "serde",
+ "serde_json",
  "state",
  "tempfile",
  "time",
@@ -1926,7 +1928,11 @@ name = "rocket-test"
 version = "0.1.0"
 dependencies = [
  "cargo-watch",
+ "chrono",
  "rocket",
+ "serde",
+ "serde_json",
+ "tokio",
 ]
 
 [[package]]
@@ -2384,6 +2390,7 @@ dependencies = [
  "bytes",
  "libc",
  "mio 1.0.4",
+ "parking_lot",
  "pin-project-lite",
  "signal-hook-registry",
  "socket2",
